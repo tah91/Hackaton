@@ -1,0 +1,5 @@
+C:\Users\XPS\Desktop\hackaton\Hackaton\Hackaton\bin\Hackaton.dll
+C:\Users\XPS\Desktop\hackaton\Hackaton\Hackaton\bin\Hackaton.pdb
+C:\Users\XPS\Desktop\hackaton\Hackaton\Hackaton\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\XPS\Desktop\hackaton\Hackaton\Hackaton\obj\Debug\Hackaton.dll
+C:\Users\XPS\Desktop\hackaton\Hackaton\Hackaton\obj\Debug\Hackaton.pdb

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="@Url.Content("~/css/Mobile.css")" />
+    <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" /> 
+   <title>@ViewBag.Title</title>
+     
+</head>
+<body>
+   <div data-role="page" class="type-home" data-theme="e"> 
+	<div data-role="header"> 
+   
+    <div data-inline="true">
+	
+	   @*@Html.Partial("M/_LogOnPartial") *@
+</div>
+<h1 aria-level="1">The Buisness Man Planner !</h1>
+    <div data-role="navbar" class="ui-navbar ui-navbar-noicons" role="navigation">
+			<ul class="ui-grid-b">
+				<li class="ui-block-a">@Html.ActionLink("Home", "Index", "Home",null, new { @class = "no-Ajax ui-btn ui-btn-up-a"}) </li>
+				<li class="ui-block-b">@Html.ActionLink("About", "About", "Home", null, new { @class = "no-Ajax ui-btn ui-btn-up-a"}) </li>
+			</ul>
+		</div><!-- /navbar -->
+
+       
+    </div>
+    <div data-role="content" data-theme="e">
+      @RenderBody()
+      </div>
+<div data-role="footer" data-theme="e">
+</div>
+    </div>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.6.2.min.js"></script>
+<script> window.jQuery || document.write(unescape("%3Cscript src='@Url.Content("~/Scripts/jquery-1.6.2.min.js")'%3E%3C/script%3E"))</script>
+   <script type="text/javascript">
+
+       $(document).bind("mobileinit", function () {
+
+           $('div[data-role="dialog"]').live("pagecreate", function () {
+               if ($(this).attr('data-theme') && $(this).hasClass('ui-body-a')) {
+                   theme = $(this).attr('data-theme')
+                   $(this).removeClass('ui-body-a').addClass('ui-body-' + theme)
+               }
+           })
+
+           $(document).ready(function () {
+               $(".no-Ajax").click(function (event) {
+                   //uncoment to disable the menu's ajax calls
+                   // $.mobile.ajaxEnabled = false;
+
+
+               });
+           });
+       });
+      
+ 
+   </script>
+   <script src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script> 
+   <script> window.jQuery || document.write(unescape("%3Cscript src='@Url.Content("~/Scripts/jquery.mobile-1.0b1.min.js")'%3E%3C/script%3E"))</script>
+
+   @RenderSection("scripts",false)
+</body>
+</html>
