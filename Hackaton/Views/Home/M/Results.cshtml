@@ -1,0 +1,22 @@
+﻿@model List<Place>
+
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Shared/M/_Layout.cshtml";
+}
+
+<section class="content">
+<header>
+<h2>@ViewBag.Message</h2>
+</header>
+
+<h2>A list view</h2>
+ 
+<ul data-role="listview" data-inset="true" data-filter="true">
+@foreach (var item in Model)
+{
+	<li>@Html.ActionLink(item.Name,"Detail",Hackaton.Controllers.HomeController.GetRVD(item))</li> 
+}
+</ul>
+
+</section>

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Search
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/M/_Layout.cshtml";
 }
@@ -7,6 +9,17 @@
 <header>
 <h2>@ViewBag.Message</h2>
 </header>
+
+	<div class="ui-body ui-body-b">
+		<fieldset class="ui-grid-a">
+			<div class="ui-block-a">
+				<a href="/Home/Search" data-role="button">Travailler</a>
+			</div>
+			<div class="ui-block-b">
+				<a href="/Home/Search" data-role="button">Marre du Boulot</a>
+			</div>
+		</fieldset>
+	</div>
 
 <p>
    The content here

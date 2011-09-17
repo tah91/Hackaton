@@ -1,0 +1,72 @@
+﻿@model Search
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/M/_Layout.cshtml";
+}
+
+<section class="content">
+<header>
+<h2>@ViewBag.Message</h2>
+</header>
+
+@using(Html.BeginForm("Search","Home",FormMethod.Post,null))
+{
+	@Html.HiddenFor(m=>m.Latitude)
+	@Html.HiddenFor(m => m.Longitude)
+
+	<div data-role="fieldcontain">
+       <label for="store">What do you need?</label>
+        <select name="offertype" id="OfferType">
+          <option value="0">Free Area</option>
+          <option value="1">Desktop</option>
+          <option value="2">Meeting Room</option>
+        </select>
+	</div>
+	
+	<div data-role="controlgroup">
+		<legend>What features you need?</legend>
+        
+		@Html.CheckBoxFor(m => m.Wifi, new { @class = "custom"})
+		@Html.LabelFor(m=>m.Wifi)
+
+		@Html.CheckBoxFor(m => m.Cafe, new { @class = "custom"})
+		@Html.LabelFor(m => m.Cafe)
+       
+		@Html.CheckBoxFor(m => m.Resto, new { @class = "custom"})
+		@Html.LabelFor(m => m.Resto)
+	   
+	    @Html.CheckBoxFor(m => m.Parking, new { @class = "custom"})
+		@Html.LabelFor(m => m.Parking)
+	   
+		@Html.CheckBoxFor(m => m.EasyAccess, new { @class = "custom"})
+	    @Html.LabelFor(m => m.EasyAccess)
+        
+    </div> 
+	<fieldset class="ui-grid-a">
+		<div class="ui-block-a">
+			<input type="submit" data-role="button" value="Travailler" />
+		</div>
+	</fieldset>
+}
+
+</section>
+
+<script type="text/javascript">
+
+
+	$(document).ready(function () {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				var latitude = position.coords.latitude;
+				var longitude = position.coords.longitude;
+				var altitude = position.coords.altitude;
+				alert(latitude);
+
+				$("#Latitude").val(latitude);
+				$("#Longitude").val(longitude);
+			});
+		}
+
+	});
+</script>

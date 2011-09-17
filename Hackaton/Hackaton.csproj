@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="MobileViewEngine.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +116,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Home\M\Search.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\M\_Layout.cshtml" />
   </ItemGroup>
@@ -133,6 +136,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\M\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\M\Results.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\M\Detail.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
