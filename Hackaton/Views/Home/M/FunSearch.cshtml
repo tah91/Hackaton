@@ -1,0 +1,54 @@
+﻿@model FunSearch
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/M/_Layout.cshtml";
+}
+
+<section class="content">
+<header>
+<h2>@ViewBag.Message</h2>
+</header>
+
+@using (Html.BeginForm("FunSearch", "Home", FormMethod.Post, null))
+{
+	@Html.HiddenFor(m=>m.Latitude)
+	@Html.HiddenFor(m => m.Longitude)
+	
+	<h3>What do you feel like doing?</h3>
+	
+	<div data-role="controlgroup">
+        
+		<div data-role="fieldcontain">
+			<select name="FunType" id="FunType">
+				<option value="3">Concert</option>
+				<option value="0">Tourism</option>
+				<option value="1">Eating</option>
+				<option value="2">Clubbing</option>
+			</select>
+		</div>
+        
+    </div>
+	
+	<div>
+		<input type="submit" data-role="button" data-icon="search" value="Go!" />
+	</div>
+}
+
+</section>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				var latitude = position.coords.latitude;
+				var longitude = position.coords.longitude;
+				var altitude = position.coords.altitude;
+
+				$("#Latitude").val(latitude);
+				$("#Longitude").val(longitude);
+			});
+		}
+
+	});
+</script>

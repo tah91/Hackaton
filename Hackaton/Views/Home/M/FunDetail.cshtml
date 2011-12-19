@@ -1,0 +1,82 @@
+﻿@model FunPlaceDetail
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/M/_Layout.cshtml";
+}
+
+<section class="content">
+<header>
+<h2>@ViewBag.Message</h2>
+</header>
+
+<h2>@Model.Name </h2>
+ 
+<h3>Description</h3>
+<p>@Model.Description</p>
+
+<img src="@Model.Image" alt="@Model.Name" style=" max-height:250px; max-width:250px"/>
+
+@if (Model.Mayor != null)
+{ 
+	<h3>Mayor</h3>
+	@Model.Mayor.FirstName @Model.Mayor.LastName
+	<img src="@Model.Mayor.Photo" alt="@Model.Name"/>
+}
+
+<div id="todoDiv">
+	<button id="todoButton" data-icon="alert">Mark as todo</button>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.Artists))
+{
+	<div data-role="collapsible" data-collapsed="true">
+	<h3>Concert</h3>
+	<h4>Artists</h4>
+	<ul data-role="listview" data-inset="true">
+	@{
+		var artists = Model.Artists.Split(',');
+	}
+	@foreach (var a in artists)
+	{ 
+		<li>@a</li>
+	}
+	</ul>
+	Start Time : @Model.StartTime
+	</div> 
+}
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>Categories</h3>
+	<ul data-role="listview" data-inset="true">
+	@foreach (var cat in Model.Categories)
+ { 
+		<li>@cat</li>
+ }
+	</ul>
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>Comments</h3>
+	<ul data-role="listview" data-inset="true">
+	@foreach (var com in Model.Comments)
+ { 
+		<li>@com.Post (@com.Author)</li>
+ }
+	</ul>
+</div>
+
+
+</section>
+
+<script type="text/javascript">
+	$("#todoButton").live("click", function () {
+		$.ajax({
+				url: "@Url.Action("Todo")",
+				data: { "id": '@Model.FoursquareId' },
+				success: function (data) {
+					$("#todoDiv").html(data);
+				}
+			});
+	});
+</script>
